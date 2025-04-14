@@ -1,0 +1,106 @@
+
+<section>
+      <img class="usuario" src="usuario.png" alt="">
+</section>
+
+<section class="main-section">
+  <div class="image-container">
+    <img class="imgprincipal" src="imageyIcon1.png" alt="Imagen principal" />
+  </div>
+
+  <h2>{{ title }}</h2>
+
+  <!-- Formulario para crear/editar una persona -->
+  <div class="form-container">
+    <h3>{{ editingPerson ? 'Editar persona' : 'Agregar Nuevo Persona' }}</h3>
+    <form (ngSubmit)="editingPerson ? updatePerson() : createPerson()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" [(ngModel)]="newPerson.nombre" name="nombre" required  placeholder="Persona"/>
+      </div>
+      <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input id="edad" [(ngModel)]="newPerson.edad" name="edad" required placeholder="Edad"/>
+      </div>
+      <div class="form-group">
+        <label for="pais">Pais:</label>
+        <input id="pais" [(ngModel)]="newPerson.pais" name="pais" required placeholder="Pais"/>
+      </div>
+      <div class="form-group">
+        <label for="talento">Talento:</label>
+        <textarea id="talento" [(ngModel)]="newPerson.talento" name="Talento" required></textarea>
+      </div>
+
+      <button type="submit">{{ editingPerson ? 'Actualizar Persona' : 'Agregar Persona' }}</button>
+    </form>
+  </div>
+
+  <!-- Tabla con los datos -->
+
+    <!-- 
+      
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Empresa</th>
+          <th>Ciudad</th>
+          <th>Profesión</th>
+          <th>Descripción</th>
+          <th>Correo</th>
+          <th>Sueldo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pagedData">
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.cuidad }}</td>
+          <td>{{ item.profesion }}</td>
+          <td>{{ item.descripcion }}</td>
+          <td>{{ item.correo }}</td>
+          <td>{{ item.sueldo | currency }}</td>
+          <td>
+            <button (click)="editPerson(item)">Editar</button>
+            <button (click)="deletePerson(item.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
+      <span>Página {{ currentPage }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= data.length">Siguiente</button>
+    </div>
+  </div>
+  -->
+
+
+  <div class="card-container">
+    <div *ngFor="let item of data.slice(0, 7)" class="card">
+      <img src="imageyIcon1.png" alt="Imagen de la persona" />
+      <h3>{{ item.nombre }}</h3>
+      <p><strong>Edad:</strong> {{ item.edad }}</p>
+      <p><strong>Pais:</strong> {{ item.pais }}</p>
+      <p><strong>Talento:</strong> {{ item.talento }}</p>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <p>&copy; 2025 Mi Empresa. Todos los derechos reservados.</p>
+  <p>Diseñado con ❤️ Ing </p>
+  <div class="social-links">
+    <a href="#" target="_blank" aria-label="Facebook">
+      <img src="facebook.png" alt="Facebook" width="30">
+    </a>
+    <a href="#" target="_blank" aria-label="Twitter">
+      <img src="tiwer.png" alt="Twitter" width="30">
+    </a>
+    <a href="#" target="_blank" aria-label="Instagram">
+      <img src="instagram.png" alt="Instagram" width="30">
+    </a>
+  </div>
+</footer>
